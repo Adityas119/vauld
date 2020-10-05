@@ -1,0 +1,31 @@
+/* You can add global styles to this file, and also import other style files */
+
+@font-face {
+    font-family: "Roboto-Regular";
+    src: url("/assets/fonts/Roboto-Regular.ttf");
+}
+
+@font-face {
+    font-family: "Roboto-Medium";
+    src: url("/assets/fonts/Roboto-Medium.ttf");
+}
+
+@font-face {
+    font-family: "Roboto-Bold";
+    src: url("/assets/fonts/Roboto-Bold.ttf");
+}
+
+// Fonts
+$font-roboto-regular: 'Roboto-Regular';
+$font-roboto-medium: 'Roboto-Medium';
+$font-roboto-bold: 'Roboto-Bold';
+
+
+
+//Colors
+$brand-primary : #1a488e;
+$brand-white : #f8f9fa;
+$brand-shadow-primary : 0 10px 20px #1a488E0F;
+$brand-shadow-secondary : 5px 10px 20px rgba(40,111,219,.16);
+$danger : red;
+

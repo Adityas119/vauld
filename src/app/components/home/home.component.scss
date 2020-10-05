@@ -1,0 +1,79 @@
+@import "./../../../assets/scss/index.scss";
+
+.vauld-logo {
+    width: 100%;
+    margin: 20px;
+    text-align: center;
+}
+
+.todo-block {
+    box-shadow: $brand-shadow-secondary;
+    max-width: 470px;
+    margin: auto;
+    border-top: 6px solid $brand-primary;
+    border-bottom: 6px solid $brand-primary;
+    border-radius: 2px;
+
+    .align-form {
+        margin: 15px;
+        font-size: 14px;
+        border-bottom: 2px solid $brand-primary;
+        padding: 15px 0px;
+
+        .error-message {
+            color: $danger;
+            font-size: 12px;
+            margin: 2px;
+        }
+    }
+
+    .todo-title {
+        font-size: 18px;
+        color: $brand-primary;
+        text-align: center;
+        margin: 15px 15px 0px 15px;
+    }
+
+    .todo-list-block {
+        margin: 0px 15px 15px 15px;
+
+        .title {
+        }
+
+        .list-name-block {
+            margin: 10px 0px;
+            padding: 10px 10px;
+            box-shadow: $brand-shadow-primary;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+
+            .task-name{
+
+            }
+
+            .line-over{
+                text-decoration-line: line-through;
+            }
+
+            .task-operations {
+                display: flex;
+                flex-wrap: nowrap;
+                justify-content: space-between;
+                width: 100px;
+
+                .mark-done {
+                    cursor: pointer;
+                }
+
+                .edit-task {
+                    cursor: pointer;
+                }
+
+                .delete-task {
+                    cursor: pointer;
+                }
+            }
+        }
+    }
+}
