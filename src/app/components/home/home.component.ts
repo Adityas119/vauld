@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, SimpleChanges } from '@angular/core';
 import { FormGroup, Validators, FormControl } from '@angular/forms';
 import { ConstantsService, GlobalEventifireService } from './../../_services';
 import { Task } from './../../_models';
@@ -10,14 +10,14 @@ import { Task } from './../../_models';
 })
 export class HomeComponent implements OnInit {
 
-  public addTaskFormGroup : FormGroup;
-  public tasksList : Array<Task> = [];
+  public addTaskFormGroup: FormGroup;
+  public tasksList: Array<Task> = [];
 
-  constructor(private _constantServce : ConstantsService, private _globalEventifire: GlobalEventifireService) {}
+  constructor(private _constantServce: ConstantsService, private _globalEventifire: GlobalEventifireService) { }
 
   ngOnInit(): void {
     this._globalEventifire.$usersTaskDetails.subscribe((res: Array<Task>) => {
-      if(res){
+      if (res) {
         this.tasksList = res;
       }
     })
@@ -30,8 +30,8 @@ export class HomeComponent implements OnInit {
     });
   }
 
-  addTask(){
-    if(this.addTaskFormGroup.valid){
+  addTask() {
+    if (this.addTaskFormGroup.valid) {
       let tempTaskObj = new Task();
       tempTaskObj.task_name = this.addTaskFormGroup.controls.task.value;
       tempTaskObj.is_deleted = false;
@@ -41,7 +41,7 @@ export class HomeComponent implements OnInit {
     }
   }
 
-  saveTaskInLocalStorageAndClearField(data){
+  saveTaskInLocalStorageAndClearField(data) {
     localStorage.setItem('taskList', JSON.stringify(data));
     this.addTaskFormGroup.setValue({
       task: null
@@ -49,21 +49,25 @@ export class HomeComponent implements OnInit {
     this.addTaskFormGroup.reset(this.addTaskFormGroup.value);
   }
 
-  deleteTask(ele){
+  deleteTask(ele) {
     this.tasksList.splice(ele, 1);
     this.saveTaskInLocalStorageAndClearField(this.tasksList);
   }
 
-  markAsDone(value){
+  markAsDone(value) {
     this.tasksList[value].is_completed = !this.tasksList[value].is_completed;
     this.saveTaskInLocalStorageAndClearField(this.tasksList);
   }
 
-  editTask(index){
+  editTask(index) {
     this.addTaskFormGroup.setValue({
       task: this.tasksList[index].task_name
     });
     this.tasksList.splice(index, 1);
+  }
+
+  reorderTaskList(data){
+    localStorage.setItem('taskList', JSON.stringify(data));
   }
 
 }
